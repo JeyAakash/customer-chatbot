@@ -119,7 +119,3 @@ The server will launch at `http://127.0.0.1:8000`.
 * **Tenant Shield**: Qdrant queries strictly enforce `customer_id` filtering, preventing any user from accessing another customer's vectorized context.
 
 ---
-
-## 📝 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
