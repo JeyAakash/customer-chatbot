@@ -47,7 +47,6 @@ def search_customer_records(customer_id: int, query_text: str, limit: int = 3):
     init_vector_db()
     try:
         query_vector = get_embedding(query_text)
-        # MANDATORY CUSTOMER FILTER: Prevent cross-customer data leakage
         search_result = qdrant_client.search(
             collection_name=COLLECTION_NAME,
             query_vector=query_vector,
