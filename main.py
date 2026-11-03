@@ -7,7 +7,6 @@ from auth import request_otp_logic, verify_otp_logic, get_current_customer
 from rag import search_customer_records, index_invoice_record
 import requests
 
-# Create database tables automatically
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Secure Customer AI Chatbot", version="1.0.0")
@@ -60,7 +59,7 @@ def chat_endpoint(
     if not conv:
         raise HTTPException(status_code=403, detail="Unauthorized access to conversation.")
 
-    # Save user message
+    
     user_msg = Message(conversation_id=conv.id, role="user", content=message)
     db.add(user_msg)
     db.commit()
@@ -83,7 +82,6 @@ def chat_endpoint(
         except Exception:
             reply = "Error communicating with LLM provider."
 
-    # Save assistant response
     assistant_msg = Message(conversation_id=conv.id, role="assistant", content=reply)
     db.add(assistant_msg)
     db.commit()
